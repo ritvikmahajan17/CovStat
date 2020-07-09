@@ -1,10 +1,16 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/peach</item>
-        <item name="colorPrimaryDark">@color/peach</item>
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
     </style>
 
 </resources>

@@ -9,34 +9,92 @@
             type="com.ritvik.coronovirusstat.skeleton.StatViewModel" />
     </data>
 
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/stat_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_login" >
+        android:background="@drawable/bg_login">
 
 
-        <TextView
-            android:id="@+id/tcases_text"
-            android:layout_width="wrap_content"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
+
+            android:layout_margin="8dp"
+
+            app:cardCornerRadius="16dp"
+            app:cardElevation="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.100000024">
 
-        <TextView
-            android:id="@+id/tdeaths_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tcases_text"
-            app:layout_constraintVertical_bias="0.120000005" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Title, secondary and supporting text -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_language_black_18dp"
+                        android:fontFamily="@font/glegoo"
+
+                        android:text="WORLDWIDE"
+                        android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                    <TextView
+                        android:id="@+id/tcases_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_north_24px"
+                        android:text="Loading..."
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        android:textColor="#06CA00" />
+
+                    <TextView
+                        android:id="@+id/ncases_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_add_black_18dp"
+                        android:text="Loading..."
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        android:textColor="#00AFFF" />
+
+                    <TextView
+                        android:id="@+id/tdeaths_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_clear_black_18dp"
+                        android:text="Loading..."
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        android:textColor="#F10030" />
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Loading"
+                        android:textAlignment="viewEnd" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

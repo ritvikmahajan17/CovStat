@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">CoronaStat</string>
-    <string name="Total">Total</string>
-    <string name="Deaths">Deaths</string>
-    <string name="Country">Coutry</string>
+    <string name="Infections">INFECTIONS</string>
+    <string name="Deaths">DEATHS</string>
+    <string name="Deaths_pm">DEATHS(pm)</string>
+    <string name="Infection_pm">INFECTIONS(pm)</string>
+    <string name="World_Update">World Update</string>
+    <string name="Recoveries">RECOVERIES</string>
+    <string name="Critical">CRITICAL</string>
+    <string name="Most_Infected">Most Infected</string>
 </resources>

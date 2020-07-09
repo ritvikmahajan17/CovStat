@@ -7,8 +7,18 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
-    private const val BASE_URL = "https://covid.ourworldindata.org/data/"
+private const val BASE_URL = "https://corona.lmao.ninja/"
+    private const val BASE_URL_WORLD = "https://corona.lmao.ninja/"
+
+enum class Country (val value :String){
+    INDIA("India"),
+    USA("USA"),
+    BRAZIL("Brazil"),
+    Russia("Russia")
+}
 
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
@@ -20,13 +30,30 @@ import retrofit2.http.GET
         .baseUrl(BASE_URL)
         .build()
 
+    private val retrofitWorld = Retrofit.Builder()
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .addCallAdapterFactory(CoroutineCallAdapterFactory())
+    .baseUrl(BASE_URL_WORLD)
+    .build()
+
     interface ApiService {
-        @GET("owid-covid-data.json")
-        fun getStats(): Deferred<statsData>
+        @GET("v2/countries/{country}?yesterday=true&strict=true&query")
+        fun getStats(@Path("country")country:String ): Deferred<CountryData>
+    }
+
+    interface ApiServiceWorld {
+        @GET("v2/all")
+        fun getWorldStats(): Deferred<WorldData>
     }
 
     object Api {
         val retrofitService: ApiService by lazy {
             retrofit.create(ApiService::class.java)
+        }
+    }
+
+    object ApiWorld {
+        val retrofitServiceWorld: ApiServiceWorld by lazy {
+            retrofitWorld.create(ApiServiceWorld::class.java)
         }
     }
