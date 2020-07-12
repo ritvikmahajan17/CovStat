@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.ritvik.coronovirusstat.R
+import com.ritvik.coronovirusstat.databinding.LayoutRcBinding
 import com.ritvik.coronovirusstat.databinding.NewStatLayoutBinding
 import com.ritvik.coronovirusstat.skeleton.StatViewModel
 import java.text.DecimalFormat
@@ -25,12 +26,14 @@ class StatFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
 
-        val binding = DataBindingUtil.inflate<NewStatLayoutBinding>(inflater, R.layout.new_stat_layout, container, false)
+        val binding = DataBindingUtil.inflate<LayoutRcBinding>(inflater, R.layout.layout_rc, container, false)
 
         statViewModel = ViewModelProviders.of(this).get(StatViewModel::class.java)
 
 
         binding.lifecycleOwner = this
+        binding.statVM = statViewModel
+        binding.countryRc.adapter = RecyclerVIewAdapter()
 
 
 
@@ -76,68 +79,68 @@ class StatFragment : Fragment() {
 //            Log.i("loll","8")
 //        })
 
-        statViewModel.firstCases.observe(this, Observer { value ->
-            binding.firstCases.text = value.toString()
-           // binding.firstFlag.setImageResource(R.drawable.usa)
-            Log.i("loll","9")
-        })
-
-        statViewModel.firstDeaths.observe(this, Observer { value ->
-            binding.firstDeaths.text = value.toString()
-            Log.i("loll","9")
-        })
-
-        statViewModel.firstRecoveries.observe(this, Observer { value ->
-            binding.firstCasesPm.text = value.toString()
-            Log.i("loll","9")
-        })
-
-        statViewModel.firstCritical.observe(this, Observer { value ->
-            binding.firstDeathsPm.text = value.toString()
-            Log.i("loll","9")
-        })
-
-        statViewModel.secondCases.observe(this, Observer { value ->
-            binding.secondCases.text = value.toString()
-            // binding.firstFlag.setImageResource(R.drawable.usa)
-            Log.i("loll","9")
-        })
-
-        statViewModel.secondDeaths.observe(this, Observer { value ->
-            binding.secondDeaths.text = value.toString()
-            Log.i("loll","9")
-        })
-
-        statViewModel.secondRecoveries.observe(this, Observer { value ->
-            binding.secondCasesPm.text = value.toString()
-            Log.i("loll","9")
-        })
-
-        statViewModel.secondCritical.observe(this, Observer { value ->
-            binding.secondDeathsPm.text = value.toString()
-            Log.i("loll","9")
-        })
-
-        statViewModel.thirdCases.observe(this, Observer { value ->
-            binding.thirdCases.text = value.toString()
-            // binding.firstFlag.setImageResource(R.drawable.usa)
-            Log.i("loll","9")
-        })
-
-        statViewModel.thirdDeaths.observe(this, Observer { value ->
-            binding.thirdDeaths.text = value.toString()
-            Log.i("loll","9")
-        })
-
-        statViewModel.thirdRecoveries.observe(this, Observer { value ->
-            binding.thirdCasesPm.text = value.toString()
-            Log.i("loll","9")
-        })
-
-        statViewModel.thirdCritical.observe(this, Observer { value ->
-            binding.thirdDeathsPm.text = value.toString()
-            Log.i("loll","9")
-        })
+//        statViewModel.firstCases.observe(this, Observer { value ->
+//            binding.firstCases.text = value.toString()
+//           // binding.firstFlag.setImageResource(R.drawable.usa)
+//            Log.i("loll","9")
+//        })
+//
+//        statViewModel.firstDeaths.observe(this, Observer { value ->
+//            binding.firstDeaths.text = value.toString()
+//            Log.i("loll","9")
+//        })
+//
+//        statViewModel.firstRecoveries.observe(this, Observer { value ->
+//            binding.firstCasesPm.text = value.toString()
+//            Log.i("loll","9")
+//        })
+//
+//        statViewModel.firstCritical.observe(this, Observer { value ->
+//            binding.firstDeathsPm.text = value.toString()
+//            Log.i("loll","9")
+//        })
+//
+//        statViewModel.secondCases.observe(this, Observer { value ->
+//            binding.secondCases.text = value.toString()
+//            // binding.firstFlag.setImageResource(R.drawable.usa)
+//            Log.i("loll","9")
+//        })
+//
+//        statViewModel.secondDeaths.observe(this, Observer { value ->
+//            binding.secondDeaths.text = value.toString()
+//            Log.i("loll","9")
+//        })
+//
+//        statViewModel.secondRecoveries.observe(this, Observer { value ->
+//            binding.secondCasesPm.text = value.toString()
+//            Log.i("loll","9")
+//        })
+//
+//        statViewModel.secondCritical.observe(this, Observer { value ->
+//            binding.secondDeathsPm.text = value.toString()
+//            Log.i("loll","9")
+//        })
+//
+//        statViewModel.thirdCases.observe(this, Observer { value ->
+//            binding.thirdCases.text = value.toString()
+//            // binding.firstFlag.setImageResource(R.drawable.usa)
+//            Log.i("loll","9")
+//        })
+//
+//        statViewModel.thirdDeaths.observe(this, Observer { value ->
+//            binding.thirdDeaths.text = value.toString()
+//            Log.i("loll","9")
+//        })
+//
+//        statViewModel.thirdRecoveries.observe(this, Observer { value ->
+//            binding.thirdCasesPm.text = value.toString()
+//            Log.i("loll","9")
+//        })
+//
+//        statViewModel.thirdCritical.observe(this, Observer { value ->
+//            binding.thirdDeathsPm.text = value.toString()
+//            Log.i("loll","9")
+//        })
 
         statViewModel.newRecovered.observe(this, Observer { value ->
             binding.newrecoveriesTextview.text = update + value.toString()
@@ -148,6 +151,8 @@ class StatFragment : Fragment() {
             binding.newcriticalTextview.text = update + value.toString()
             Log.i("loll","9")
         })
+
+
 
         return binding.root
       }

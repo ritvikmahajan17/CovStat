@@ -13,10 +13,10 @@ data class CountryInfo (
     var iso3: String? = null,
 
     @Json(name = "lat")
-    var lat: Int? = null,
+    var lat: Double? = null,
 
     @Json(name = "long")
-    var long: Int? = null,
+    var long: Double? = null,
 
     @Json(name = "flag")
     var flag: String? = null

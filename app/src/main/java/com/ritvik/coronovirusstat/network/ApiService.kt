@@ -37,8 +37,8 @@ enum class Country (val value :String){
     .build()
 
     interface ApiService {
-        @GET("v2/countries/{country}?yesterday=true&strict=true&query")
-        fun getStats(@Path("country")country:String ): Deferred<CountryData>
+        @GET("v2/countries?yesterday&sort=cases")
+        fun getStats(): Deferred<List<CountryData>>
     }
 
     interface ApiServiceWorld {
