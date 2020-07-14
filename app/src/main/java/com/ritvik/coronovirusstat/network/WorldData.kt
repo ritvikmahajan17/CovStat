@@ -1,8 +1,10 @@
 package com.ritvik.coronovirusstat.network
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
-
+@Parcelize
 data class WorldData (
     @Json(name = "updated")
     var updated: Double? = null,
@@ -67,4 +69,4 @@ data class WorldData (
     @Json(name = "affectedCountries")
     var affectedCountries: Int? = null
 
-)
+) : Parcelable

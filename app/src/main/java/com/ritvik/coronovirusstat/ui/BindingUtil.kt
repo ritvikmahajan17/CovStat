@@ -14,8 +14,11 @@ import com.ritvik.coronovirusstat.network.CountryData
 import com.ritvik.coronovirusstat.network.CountryInfo
 import com.ritvik.coronovirusstat.skeleton.ApiStatus
 import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.util.*
 import kotlin.math.floor
 import kotlin.math.log10
+import kotlin.math.roundToInt
 
 fun prettyCount(number: Number): String {
     val suffix = charArrayOf(' ', 'k', 'M', 'B', 'T', 'P', 'E')
@@ -29,6 +32,12 @@ fun prettyCount(number: Number): String {
         DecimalFormat("#,##0").format(numValue)
     }
 }
+
+fun formatNumber(number: Int?): String? {
+    return NumberFormat.getNumberInstance(Locale.getDefault()).format(number)
+}
+
+val update = "+"
 
 @BindingAdapter("countryListData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<CountryData>?) {
@@ -54,9 +63,56 @@ fun TextView.setRecovered(data: CountryData) {
 
 @BindingAdapter("countryCritical")
 fun TextView.setCritical(data: CountryData) {
-    text = data.critical?.let { prettyCount(it) }
+    text = data.active?.let { prettyCount(it) }
 
 }
+
+@BindingAdapter("countryName")
+fun TextView.setName(data: CountryData) {
+    text = data.country
+}
+
+@BindingAdapter("newCases")
+fun TextView.setNewCases(data: CountryData) {
+    text =  update + data.todayCases?.roundToInt()
+}
+
+@BindingAdapter("totalCases")
+fun TextView.setTotalCases(data: CountryData) {
+    text = formatNumber(data.cases?.roundToInt())
+}
+
+@BindingAdapter("newDeaths")
+fun TextView.setNewDeaths(data: CountryData) {
+    text =  update + data.todayDeaths?.roundToInt()
+}
+
+@BindingAdapter("totalDeaths")
+fun TextView.setTotalDeaths(data: CountryData) {
+    text = formatNumber(data.deaths?.roundToInt())
+}
+
+@BindingAdapter("newRecovered")
+fun TextView.setNewRecovered(data: CountryData) {
+    text =  update + data.todayRecovered?.roundToInt()
+}
+
+@BindingAdapter("totalRecovered")
+fun TextView.setTotalRecovered(data: CountryData) {
+    text = formatNumber(data.recovered?.roundToInt())
+}
+
+@BindingAdapter("newCritical")
+fun TextView.setNewCritical(data: CountryData) {
+    text = update + data.critical?.roundToInt()
+}
+
+@BindingAdapter("totalCritical")
+fun TextView.setTotalCritical(data: CountryData) {
+    text = formatNumber(data.active?.roundToInt())
+}
+
+
 
 @BindingAdapter("countryFlag")
 fun bindImage(imgView: ImageView, imgUrl: String? ) {

@@ -74,6 +74,10 @@ class StatViewModel : ViewModel() {
     val countryData: LiveData<List<CountryData>>
         get() =  _countryData
 
+    private val _navigateToSelectedCountry = MutableLiveData<CountryData>()
+    val navigateToSelectedCountry: LiveData<CountryData>
+        get() = _navigateToSelectedCountry
+
 
     fun formatNumber(number: Double?): String? {
         return NumberFormat.getNumberInstance(Locale.getDefault()).format(number)
@@ -95,13 +99,13 @@ class StatViewModel : ViewModel() {
             var getStatsDeffered = Api.retrofitService.getStats()
             try {
                 var listResult = getStatsDeffered.await()
-               // _status.value = ApiStatus.LOADING
+
                 _countryData.value = listResult
-              //  _status.value = ApiStatus.DONE
+
 
             }
             catch (e : Exception){
-               // _status.value = ApiStatus.ERROR
+
                 _countryData.value =ArrayList()
             }
         }
@@ -119,8 +123,8 @@ class StatViewModel : ViewModel() {
 
                     _totalDeaths.value = formatNumber(listResult.deaths)
 
-                    _newCases.value = listResult.todayCases.toString()
-
+                    _newCases.value = listResult.todayCases?.roundToInt().toString()
+                     Log.i("mahajan",_newCases.value)
                     _newDeaths.value =listResult.todayDeaths?.roundToInt().toString()
 
                     _totalRecovered.value = formatNumber(listResult.recovered)
@@ -145,5 +149,12 @@ class StatViewModel : ViewModel() {
         viewModelJob.cancel()
     }
 
+    fun displayCountryDetails(countryData: CountryData) {
+        _navigateToSelectedCountry.value = countryData
+    }
+
+    fun displayPropertyDetailsComplete() {
+        _navigateToSelectedCountry.value = null
+    }
 
 }

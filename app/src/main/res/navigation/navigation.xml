@@ -3,12 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/statFragment">
+    app:startDestination="@id/loadingFragment">
 
 
     <fragment
         android:id="@+id/statFragment"
         android:name="com.ritvik.coronovirusstat.ui.StatFragment"
         android:label="StatFragment"
-        tools:layout="@layout/statistics_layout"/>
+        tools:layout="@layout/layout_rc">
+        <action
+            android:id="@+id/action_statFragment_to_countryStatFragment"
+            app:destination="@id/countryStatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/countryStatFragment"
+        android:name="com.ritvik.coronovirusstat.ui.CountryStatFragment"
+        android:label="CountryStatFragment"
+        tools:layout="@layout/country_stat_layout">
+        <argument
+            android:name="selectedCountryData"
+            app:argType="com.ritvik.coronovirusstat.network.CountryData" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadingFragment"
+        android:name="com.ritvik.coronovirusstat.ui.LoadingFragment"
+        android:label="LoadingFragment"
+        tools:layout="@layout/loading_layout">
+        <action
+            android:id="@+id/action_loadingFragment_to_statFragment"
+            app:destination="@id/statFragment" />
+    </fragment>
 </navigation>
