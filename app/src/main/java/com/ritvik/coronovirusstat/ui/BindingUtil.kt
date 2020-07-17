@@ -12,6 +12,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.ritvik.coronovirusstat.R
 import com.ritvik.coronovirusstat.network.CountryData
 import com.ritvik.coronovirusstat.network.CountryInfo
+import com.ritvik.coronovirusstat.network.WorldData
 import com.ritvik.coronovirusstat.skeleton.ApiStatus
 import java.text.DecimalFormat
 import java.text.NumberFormat
@@ -37,11 +38,18 @@ fun formatNumber(number: Int?): String? {
     return NumberFormat.getNumberInstance(Locale.getDefault()).format(number)
 }
 
-val update = "+"
+const val update = "+"
 
 @BindingAdapter("countryListData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<CountryData>?) {
     val adapter = recyclerView.adapter as RecyclerVIewAdapter
+    adapter.submitList(data)
+
+}
+
+@BindingAdapter("allCountryList")
+fun bindRecyclerViewCountry(recyclerView: RecyclerView, data: List<CountryData>?) {
+    val adapter = recyclerView.adapter as RecyclerViewAdapterCountries
     adapter.submitList(data)
 
 }
@@ -112,7 +120,10 @@ fun TextView.setTotalCritical(data: CountryData) {
     text = formatNumber(data.active?.roundToInt())
 }
 
-
+@BindingAdapter("totalWorldCases")
+fun TextView.setTotalWorldCases(data: WorldData) {
+    text = formatNumber(data.cases?.roundToInt())
+}
 
 @BindingAdapter("countryFlag")
 fun bindImage(imgView: ImageView, imgUrl: String? ) {

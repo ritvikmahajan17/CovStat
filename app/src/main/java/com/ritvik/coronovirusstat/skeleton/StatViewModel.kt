@@ -74,6 +74,10 @@ class StatViewModel : ViewModel() {
     val countryData: LiveData<List<CountryData>>
         get() =  _countryData
 
+    private val _worldData = MutableLiveData<WorldData>()
+    val worldData: LiveData<WorldData>
+        get() =  _worldData
+
     private val _navigateToSelectedCountry = MutableLiveData<CountryData>()
     val navigateToSelectedCountry: LiveData<CountryData>
         get() = _navigateToSelectedCountry
@@ -96,16 +100,12 @@ class StatViewModel : ViewModel() {
     @SuppressLint("LogNotTimber")
     private fun getStats() {
         coroutineScope.launch {
-            var getStatsDeffered = Api.retrofitService.getStats()
+            val getStatsDeffered = Api.retrofitService.getStats()
             try {
-                var listResult = getStatsDeffered.await()
-
+                val listResult = getStatsDeffered.await()
                 _countryData.value = listResult
-
-
             }
             catch (e : Exception){
-
                 _countryData.value =ArrayList()
             }
         }
@@ -116,15 +116,15 @@ class StatViewModel : ViewModel() {
             val getStatsDeffered = ApiWorld.retrofitServiceWorld.getWorldStats()
             try {
                 _status.value = ApiStatus.LOADING
+
                 val listResult = getStatsDeffered.await()
-                _status.value = ApiStatus.DONE
 
                     _totalCases.value = formatNumber(listResult.cases)
 
                     _totalDeaths.value = formatNumber(listResult.deaths)
 
                     _newCases.value = listResult.todayCases?.roundToInt().toString()
-                     Log.i("mahajan",_newCases.value)
+
                     _newDeaths.value =listResult.todayDeaths?.roundToInt().toString()
 
                     _totalRecovered.value = formatNumber(listResult.recovered)
@@ -136,6 +136,7 @@ class StatViewModel : ViewModel() {
                     _newCritical.value = listResult.critical?.roundToInt().toString()
 
 
+                _status.value = ApiStatus.DONE
 
             }
             catch (e : Exception){

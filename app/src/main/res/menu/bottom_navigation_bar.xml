@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/statFragment"
+        android:title="@string/menu_world"
+        android:icon="@drawable/public_white_18dp"/>
+
+    <item
+        android:id="@+id/allCountryListFragment"
+        android:title="@string/menu_countries"
+        android:icon="@drawable/emoji_flags_white_18dp"/>
+
+</menu>

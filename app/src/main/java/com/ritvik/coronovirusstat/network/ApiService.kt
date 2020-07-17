@@ -31,20 +31,32 @@ enum class Country (val value :String){
         .build()
 
     private val retrofitWorld = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .addCallAdapterFactory(CoroutineCallAdapterFactory())
-    .baseUrl(BASE_URL_WORLD)
-    .build()
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+        .baseUrl(BASE_URL_WORLD)
+        .build()
+
+    private val retrofitCountrylist = Retrofit.Builder()
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+        .baseUrl(BASE_URL)
+        .build()
 
     interface ApiService {
         @GET("v2/countries?yesterday&sort=cases")
         fun getStats(): Deferred<List<CountryData>>
     }
 
+    interface ApiServiceCountryList {
+        @GET("v2/countries?yesterday&sort=iso3")
+        fun getCountryList(): Deferred<List<CountryData>>
+}
+
     interface ApiServiceWorld {
         @GET("v2/all")
         fun getWorldStats(): Deferred<WorldData>
     }
+
 
     object Api {
         val retrofitService: ApiService by lazy {
@@ -55,5 +67,11 @@ enum class Country (val value :String){
     object ApiWorld {
         val retrofitServiceWorld: ApiServiceWorld by lazy {
             retrofitWorld.create(ApiServiceWorld::class.java)
+        }
+    }
+
+    object ApiCountryList {
+        val retrofitServiceCountryList: ApiServiceCountryList by lazy {
+            retrofitCountrylist.create(ApiServiceCountryList::class.java)
         }
     }

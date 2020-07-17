@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_statFragment_to_countryStatFragment"
             app:destination="@id/countryStatFragment" />
+        <action
+            android:id="@+id/action_statFragment_to_allCountryListFragment2"
+            app:destination="@id/allCountryListFragment" />
     </fragment>
     <fragment
         android:id="@+id/countryStatFragment"
@@ -32,5 +35,14 @@
         <action
             android:id="@+id/action_loadingFragment_to_statFragment"
             app:destination="@id/statFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allCountryListFragment"
+        android:name="com.ritvik.coronovirusstat.ui.AllCountryListFragment"
+        android:label="AllCountryListFragment"
+        tools:layout="@layout/all_country_list_layout">
+        <action
+            android:id="@+id/action_allCountryListFragment_to_countryStatFragment"
+            app:destination="@id/countryStatFragment" />
     </fragment>
 </navigation>

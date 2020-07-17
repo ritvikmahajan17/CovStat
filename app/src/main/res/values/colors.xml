@@ -25,4 +25,7 @@
     <color name="light_green">#BFE6BA</color>
 
     <color name="dark_green">#D3959B</color>
+
+    <color name="white">#FFFFFF</color>
+
 </resources>

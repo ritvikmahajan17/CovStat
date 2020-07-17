@@ -8,4 +8,7 @@
     <string name="Recoveries">RECOVERIES</string>
     <string name="Critical">CRITICAL</string>
     <string name="Most_Infected">Most Infected</string>
+    <string name="All_Countries">ALL COUNTRIES</string>
+    <string name="menu_world">WORLD</string>
+    <string name="menu_countries">COUNTRIES</string>
 </resources>
