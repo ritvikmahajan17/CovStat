@@ -25,6 +25,7 @@ class LoadingFragment : Fragment() {
 
         val binding = LoadingLayoutBinding.inflate(inflater)
 
+
         val statViewModel = ViewModelProviders.of(this).get(StatViewModel::class.java)
 
         binding.lifecycleOwner = this
