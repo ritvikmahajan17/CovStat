@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/bangers</item>
+        <item>@font/doppio_one</item>
         <item>@font/glegoo</item>
         <item>@font/heebo_bold</item>
         <item>@font/heebo_medium</item>

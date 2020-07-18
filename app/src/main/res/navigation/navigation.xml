@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_loadingFragment_to_statFragment"
             app:destination="@id/statFragment" />
+        <action
+            android:id="@+id/action_loadingFragment_to_offlineFragment"
+            app:destination="@id/offlineFragment" />
     </fragment>
     <fragment
         android:id="@+id/allCountryListFragment"
@@ -45,4 +48,9 @@
             android:id="@+id/action_allCountryListFragment_to_countryStatFragment"
             app:destination="@id/countryStatFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/offlineFragment"
+        android:name="com.ritvik.coronovirusstat.ui.OfflineFragment"
+        android:label="OfflineFragment"
+        tools:layout="@layout/offline_layout"/>
 </navigation>

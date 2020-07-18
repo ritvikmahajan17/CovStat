@@ -343,13 +343,6 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_end="54dp" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="440dp" />
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
@@ -365,13 +358,16 @@
             app:layout_constraintTop_toBottomOf="@+id/card3"
             app:layout_constraintVertical_bias="0.060000002" />
 
+
         <LinearLayout
             android:id="@+id/linearLayout2"
             style="@style/Divider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView">
 
@@ -379,27 +375,29 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/country_rc"
-            android:layout_width="320dp"
-            android:layout_height="270dp"
+            android:layout_width="wrap_content"
+            android:layout_height="263dp"
             android:clipToPadding="false"
             android:padding="6dp"
             app:countryListData="@{statVM.countryData}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/guideline4"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
             tools:listitem="@layout/list_view_item" />
 
-        <ImageView
-            android:id="@+id/status_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:ApiStatus="@{statVM.status}" />
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/status_image"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:ApiStatus="@{statVM.status}" />-->
 
 <!--        <SearchView-->
 <!--            android:layout_width="150dp"-->
@@ -410,5 +408,7 @@
 <!--            app:layout_constraintVertical_bias="1.0" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </layout>

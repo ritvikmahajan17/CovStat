@@ -27,10 +27,16 @@ class LoadingFragment : Fragment() {
 
         val statViewModel = ViewModelProviders.of(this).get(StatViewModel::class.java)
 
+        binding.lifecycleOwner = this
+
         statViewModel.status.observe(this, Observer { value ->
             if(value == ApiStatus.DONE){
 
                 findNavController().navigate(LoadingFragmentDirections.actionLoadingFragmentToStatFragment())
+            }
+
+            else if (value == ApiStatus.ERROR){
+                findNavController().navigate(LoadingFragmentDirections.actionLoadingFragmentToOfflineFragment())
             }
 
         })
