@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_statFragment_to_allCountryListFragment2"
             app:destination="@id/allCountryListFragment" />
+        <action
+            android:id="@+id/action_statFragment_to_offlineFragment"
+            app:destination="@id/offlineFragment" />
     </fragment>
     <fragment
         android:id="@+id/countryStatFragment"
@@ -47,6 +50,9 @@
         <action
             android:id="@+id/action_allCountryListFragment_to_countryStatFragment"
             app:destination="@id/countryStatFragment" />
+        <action
+            android:id="@+id/action_allCountryListFragment_to_offlineFragment"
+            app:destination="@id/offlineFragment" />
     </fragment>
     <fragment
         android:id="@+id/offlineFragment"

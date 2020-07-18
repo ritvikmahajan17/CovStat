@@ -11,10 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.ritvik.coronovirusstat.databinding.AllCountryListLayoutBinding
 import com.ritvik.coronovirusstat.databinding.CountryStatLayoutBinding
-import com.ritvik.coronovirusstat.skeleton.AllCountryListViewModel
-import com.ritvik.coronovirusstat.skeleton.CountryStatViewModel
-import com.ritvik.coronovirusstat.skeleton.CountryStatViewModelFactory
-import com.ritvik.coronovirusstat.skeleton.StatViewModel
+import com.ritvik.coronovirusstat.skeleton.*
 
 class AllCountryListFragment : Fragment() {
     @SuppressLint("FragmentLiveDataObserve")
@@ -45,6 +42,13 @@ class AllCountryListFragment : Fragment() {
 
                 statViewModel.displayPropertyDetailsComplete()
             }
+        })
+
+        statViewModel.status.observe(this, Observer { value ->
+            if (value == ApiStatus.ERROR) {
+                findNavController().navigate(AllCountryListFragmentDirections.actionAllCountryListFragmentToOfflineFragment())
+            }
+
         })
 
         return binding.root

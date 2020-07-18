@@ -376,9 +376,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/country_rc"
             android:layout_width="wrap_content"
-            android:layout_height="263dp"
+            android:layout_height="235dp"
             android:clipToPadding="false"
-            android:padding="6dp"
             app:countryListData="@{statVM.countryData}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="@id/guideline4"

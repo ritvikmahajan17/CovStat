@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ritvik.coronovirusstat.R
 import com.ritvik.coronovirusstat.databinding.LayoutRcBinding
 import com.ritvik.coronovirusstat.network.CountryData
+import com.ritvik.coronovirusstat.skeleton.ApiStatus
 import com.ritvik.coronovirusstat.skeleton.StatViewModel
 
 
@@ -45,6 +46,13 @@ class StatFragment : Fragment() {
 
         binding.countryRc.adapter = RecyclerVIewAdapter(RecyclerVIewAdapter.OnClickListener {
             statViewModel.displayCountryDetails(it)
+        })
+
+        statViewModel.status.observe(this, Observer { value ->
+            if (value == ApiStatus.ERROR) {
+                findNavController().navigate(StatFragmentDirections.actionStatFragmentToOfflineFragment())
+            }
+
         })
 
         statViewModel.totalCases.observe(this, Observer { value ->
