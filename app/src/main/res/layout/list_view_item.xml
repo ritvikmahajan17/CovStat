@@ -44,7 +44,7 @@
                 <TextView
                     android:id="@+id/first_cases"
                     android:layout_width="60dp"
-                    android:layout_height="20dp"
+                    android:layout_height="25dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/heebo_medium"
@@ -58,7 +58,7 @@
                 <TextView
                     android:id="@+id/first_deaths"
                     android:layout_width="60dp"
-                    android:layout_height="20dp"
+                    android:layout_height="25dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/heebo_medium"
@@ -72,7 +72,7 @@
                 <TextView
                     android:id="@+id/first_cases_pm"
                     android:layout_width="60dp"
-                    android:layout_height="20dp"
+                    android:layout_height="25dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/heebo_medium"
@@ -86,9 +86,10 @@
                 <TextView
                     android:id="@+id/first_deaths_pm"
                     android:layout_width="60dp"
-                    android:layout_height="20dp"
+                    android:layout_height="25dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginStart="5dp"
                     android:fontFamily="@font/heebo_medium"
                     app:countryCritical="@{listview}"
                     android:textAlignment="center"

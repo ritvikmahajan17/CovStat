@@ -12,4 +12,5 @@
     <string name="menu_world">WORLD</string>
     <string name="menu_countries">COUNTRIES</string>
     <string name="no_internet">NO INTERNET</string>
+    <string name="per_million">PER MILLION</string>
 </resources>
