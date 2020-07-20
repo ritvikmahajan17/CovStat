@@ -13,4 +13,6 @@
     <string name="menu_countries">COUNTRIES</string>
     <string name="no_internet">NO INTERNET</string>
     <string name="per_million">PER MILLION</string>
+    <string name="fatality_rate">Fatality Rate</string>
+    <string name="recovery_rate">Recovery Rate</string>
 </resources>

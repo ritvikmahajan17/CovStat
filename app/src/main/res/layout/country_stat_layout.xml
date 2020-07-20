@@ -46,21 +46,21 @@
                     android:autoSizeStepGranularity="2sp"
                     android:autoSizeTextType="uniform"
                     android:fontFamily="@font/heebo_medium"
-                    app:newCases="@{countryStatVM.selectedCountryData}"
                     android:textAlignment="center"
                     android:textColor="#6f758e"
-                    android:textSize="18sp">
+                    android:textSize="18sp"
+                    app:newCases="@{countryStatVM.selectedCountryData}">
 
                 </TextView>
 
                 <TextView
                     android:id="@+id/country_totalcases_textview"
+                    totalCases="@{countryStatVM.selectedCountryData}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/heebo_medium"
-                    totalCases="@{countryStatVM.selectedCountryData}"
                     android:textColor="#8b5bf3"
                     android:textSize="18sp">
 
@@ -109,6 +109,7 @@
 
                 <TextView
                     android:id="@+id/country_newdeaths_textview"
+                    newDeaths="@{countryStatVM.selectedCountryData}"
                     android:layout_width="50dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="25dp"
@@ -118,7 +119,6 @@
                     android:autoSizeStepGranularity="2sp"
                     android:autoSizeTextType="uniform"
                     android:fontFamily="@font/heebo_medium"
-                    newDeaths="@{countryStatVM.selectedCountryData}"
                     android:textColor="#6f758e"
                     android:textSize="18sp">
 
@@ -126,12 +126,12 @@
 
                 <TextView
                     android:id="@+id/country_totaldeaths_textview"
+                    totalDeaths="@{countryStatVM.selectedCountryData}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/heebo_medium"
-                    totalDeaths="@{countryStatVM.selectedCountryData}"
                     android:textColor="#e74782"
                     android:textSize="18sp">
 
@@ -178,6 +178,7 @@
 
                 <TextView
                     android:id="@+id/country_newrecoveries_textview"
+                    newRecovered="@{countryStatVM.selectedCountryData}"
                     android:layout_width="50dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="25dp"
@@ -187,7 +188,6 @@
                     android:autoSizeStepGranularity="2sp"
                     android:autoSizeTextType="uniform"
                     android:fontFamily="@font/heebo_medium"
-                    newRecovered="@{countryStatVM.selectedCountryData}"
                     android:textColor="#6f758e"
                     android:textSize="18sp">
 
@@ -195,12 +195,12 @@
 
                 <TextView
                     android:id="@+id/country_totalRecoveries_textview"
+                    totalRecovered="@{countryStatVM.selectedCountryData}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/heebo_medium"
-                    totalRecovered="@{countryStatVM.selectedCountryData}"
                     android:textColor="#83c287"
                     android:textSize="18sp">
 
@@ -249,6 +249,7 @@
 
                 <TextView
                     android:id="@+id/country_newcritical_textview"
+                    newCritical="@{countryStatVM.selectedCountryData}"
                     android:layout_width="50dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="25dp"
@@ -258,7 +259,6 @@
                     android:autoSizeStepGranularity="2sp"
                     android:autoSizeTextType="uniform"
                     android:fontFamily="@font/heebo_medium"
-                    newCritical="@{countryStatVM.selectedCountryData}"
                     android:textColor="#6f758e"
                     android:textSize="18sp">
 
@@ -266,12 +266,12 @@
 
                 <TextView
                     android:id="@+id/country_totalcritical_textview"
+                    totalCritical="@{countryStatVM.selectedCountryData}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/heebo_medium"
-                    totalCritical="@{countryStatVM.selectedCountryData}"
                     android:textColor="#ffce5c"
                     android:textSize="18sp">
 
@@ -342,6 +342,94 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.58000004" />
 
+        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/circularProgressBar_fatality"
+            android:layout_width="176dp"
+            android:layout_height="169dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            app:cpb_background_progressbar_color="#b6bbd8"
+            app:cpb_background_progressbar_width="7dp"
+            app:cpb_progress="0"
+            app:cpb_progress_direction="to_right"
+            app:cpb_progress_max="100"
+            app:cpb_progressbar_color="#e74782"
+            app:cpb_progressbar_width="10dp"
+            app:cpb_round_border="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/circularProgressBar_recovery"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card3"
+            app:layout_constraintVertical_bias="0.19999999" />
+
+        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/circularProgressBar_recovery"
+            android:layout_width="176dp"
+            android:layout_height="169dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            app:cpb_background_progressbar_color="#b6bbd8"
+            app:cpb_background_progressbar_width="7dp"
+            app:cpb_progress="0"
+            app:cpb_progress_direction="to_right"
+            app:cpb_progress_max="100"
+            app:cpb_progressbar_color="#83c287"
+            app:cpb_progressbar_width="10dp"
+            app:cpb_round_border="false"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/circularProgressBar_fatality"
+            app:layout_constraintTop_toBottomOf="@+id/card3"
+            app:layout_constraintVertical_bias="0.19999999" />
+
+        <TextView
+            android:id="@+id/fatality_rate_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/circularProgressBar_fatality"
+            app:layout_constraintEnd_toEndOf="@+id/circularProgressBar_fatality"
+            app:layout_constraintStart_toStartOf="@+id/circularProgressBar_fatality"
+            app:layout_constraintTop_toTopOf="@+id/circularProgressBar_fatality" />
+
+        <TextView
+            android:id="@+id/recovery_rate_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/circularProgressBar_recovery"
+            app:layout_constraintEnd_toEndOf="@+id/circularProgressBar_recovery"
+            app:layout_constraintStart_toStartOf="@+id/circularProgressBar_recovery"
+            app:layout_constraintTop_toTopOf="@+id/circularProgressBar_recovery" />
+
+        <TextView
+            android:id="@+id/fatality_rate_textbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fatality_rate"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/circularProgressBar_fatality"
+            app:layout_constraintStart_toStartOf="@+id/circularProgressBar_fatality"
+            app:layout_constraintTop_toBottomOf="@+id/circularProgressBar_fatality"
+            app:layout_constraintVertical_bias="0.100000024" />
+
+        <TextView
+            android:id="@+id/recovery_rate_textbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recovery_rate"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/circularProgressBar_recovery"
+            app:layout_constraintStart_toStartOf="@+id/circularProgressBar_recovery"
+            app:layout_constraintTop_toBottomOf="@+id/circularProgressBar_recovery"
+            app:layout_constraintVertical_bias="0.100000024" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
