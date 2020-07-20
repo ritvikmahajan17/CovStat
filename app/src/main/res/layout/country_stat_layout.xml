@@ -324,9 +324,9 @@
         <TextView
             android:id="@+id/textView3"
             android:layout_width="100dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:autoSizeMaxTextSize="28sp"
-            android:autoSizeMinTextSize="20sp"
+            android:autoSizeMinTextSize="14sp"
             android:autoSizeStepGranularity="2sp"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/ubuntu_bold"
