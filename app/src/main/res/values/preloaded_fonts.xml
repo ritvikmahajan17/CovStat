@@ -7,6 +7,7 @@
         <item>@font/glegoo</item>
         <item>@font/heebo_bold</item>
         <item>@font/heebo_medium</item>
+        <item>@font/roboto</item>
         <item>@font/ubuntu_bold</item>
     </array>
 </resources>
